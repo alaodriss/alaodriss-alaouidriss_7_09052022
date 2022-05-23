@@ -1,44 +1,72 @@
 @import "bootstrap/bootstrap.scss";
 
-.logo img {
-   margin: 5% 40%;  
-   width: 250px ;
-   height: 100px;
-}
 
-input[type=text] {
-    background-image: url(/assets/search.svg);
-    background-position: 1257px 9px;
-    background-repeat: no-repeat;
-    background-size: 20px;
-}
+// import google fonts 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lato:wght@100;300;400;700;900&family=Roboto:wght@100;300;400;500;700&display=swap');
 
-.cards_grib{
-    
+// BREAKPOINTS
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    grid-auto-rows: minmax(100px, auto);
-    margin-top: 2%;
+$breakpoints: (mobile: 576px,
+    tablets: 768px,
+    desktop: 992px,
+    larger_desktop: 1200px,
+);
 
-    .recette_card{
-        background: #E7E7E7;
-        border-radius: 5px;
+@mixin mobile-only {
+    @media screen and (min-width: map-get($breakpoints, mobile)) {
+        @content;
     }
-    
-    
-.img_recette{
-    width: 100%;
-    object-fit: cover;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 
-h2{
-    font-size: 19px !important;
+@mixin tablets-only {
+    @media screen and (min-width: map-get($breakpoints, tablets)) {
+        @content;
+    }
 }
 
+@mixin desktop-only {
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+        @content;
+    }
+}
+
+@mixin largerDesktop-only {
+    @media screen and (min-width: map-get($breakpoints, larger_desktop)) {
+        @content;
+    }
+}
+
+//general elements
+.show {
+    display: inline;
+}
+
+.hide {
+    display: none;
+}
+
+.expand {
+    width: 500px;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+h1 {
+    font-family: "DM Sans", sans-serif;
+    color: #d04f4f;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+label {
+    font-family: "Lato";
+    font-size: 18px;
 }
 
 
@@ -91,7 +119,28 @@ h2{
     }
 
     .card-body {
-       
+        height: 320px;
+
+        /*media query desktop*/
+        @include mobile-only {
+            height: 450px;
+
+        }
+
+        @include tablets-only {
+            height: 340px;
+
+        }
+
+        @include desktop-only {
+            height: 350px;
+
+        }
+
+        @include largerDesktop-only {
+            height: 320px;
+        }
+
         .card-recette {
             height: 80%;
         }
@@ -168,63 +217,161 @@ input {
 
 
 
+.search-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-.dropbtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
-  }
-  
-  #myInput {
-    box-sizing: border-box;
-    background-image: url('searchicon.png');
-    background-position: 14px 12px;
-    background-repeat: no-repeat;
-    font-size: 16px;
-    padding: 14px 20px 12px 45px;
-    border: none;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  #myInput:focus {outline: 3px solid #ddd;}
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
+    .search-wrapper-ingredients,
+    .search-wrapper-appliances,
+    .search-wrapper-ustensils {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 185px;
+        border-radius: 0.25rem;
+        margin-right: 20px;
+        color: #fff;
+        transition: width .2s ease-in-out;
 
-  .dropdown_app{
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
+
+        .search-control-ingredients,
+        .search-control-appliances,
+        .search-control-ustensils {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            padding: 15px;
+        }
+
+        .close-dropdown-ingredients,
+        .close-dropdown-appliances,
+        .close-dropdown-ustensils {
+            transition: all .2s ease-in-out;
+            margin: 0 10px;
+            z-index: 600;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .ingredients-text,
+        .appliances-text,
+        .ustensils-text {
+            pointer-events: none;
+        }
+
+        input {
+            z-index: 200;
+            width: 100px;
+            background-color: transparent;
+            border: none;
+            color: rgba(231, 231, 231);
+
+            &::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: rgb(235, 235, 235);
+                ;
+            }
+
+            &::-moz-placeholder {
+                /* Firefox 19+ */
+                color: rgb(247, 247, 247);
+                ;
+            }
+
+            &:-ms-input-placeholder {
+                /* IE 10+ */
+                color: rgba(231, 231, 231);
+                ;
+            }
+
+            &:-moz-placeholder {
+                /* Firefox 18- */
+                color: rgb(247, 247, 247);
+                ;
+            }
+
+
+
+
+
+        }
+
+        .search-list-block-ingredients {
+            background-color: $primary;
+        }
+
+        .search-list-block-appliances {
+            background-color: $success;
+        }
+
+        .search-list-block-ustensils {
+            background-color: $danger;
+        }
+
+        .search-list-block-ingredients,
+        .search-list-block-appliances,
+        .search-list-block-ustensils {
+            position: absolute;
+            top: 54px;
+            left: 0;
+            z-index: 200;
+            width: 185px;
+            padding: 10px;
+            max-height: 360px;
+            overflow-y: auto;
+            transition: width .2s ease-in-out;
+        }
+
+        .search-list-block-ingredients {
+            scrollbar-color: darken($primary, 30%) $primary;
+            scrollbar-width: thin;
+        }
+
+        .search-list-block-appliances {
+            scrollbar-color: darken($success, 30%) $success;
+            scrollbar-width: thin;
+        }
+
+        .search-list-block-ustensils {
+            scrollbar-color: darken($danger, 30%) $danger;
+            scrollbar-width: thin;
+        }
+
+        .search-list-ingredients,
+        .search-list-appliances,
+        .search-list-ustensils {
+            width: 100%;
+            margin-right: 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .expand-search-list {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+
+            li {
+                margin: 10px;
+                margin-bottom: 10px;
+                display: inline;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+//display no message if no recipes
+.message-no-recette {
+    margin-top: 20px;
     display: none;
-    position: absolute;
-    background-color: #f6f6f6;
-    min-width: 230px;
-    overflow: auto;
-    border: 1px solid #ddd;
-    z-index: 1;
-  }
-  .dropdown-content-app{
-    display: none;
-    position: absolute;
-    background-color: #f6f6f6;
-    min-width: 230px;
-    overflow: auto;
-    border: 1px solid #ddd;
-    z-index: 1;
-  }
-  
-  
-  .dropdown a:hover {background-color: #ddd;}
-  .showApp {display: block;}
-  .show {display: block;}
+}
+
+.message-no-recette p {
+    font-size: 22px;
+}

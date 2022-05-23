@@ -13,97 +13,125 @@
     <title>Les petitis plats</title>
 </head>
 <body>
-    <div class="container">
-    <header>
-        <div class="logo">
-            <img src="/assets/logo.png" alt="logo">
+  <main>
+      <!-- header  -->
+      <header>
+        <div class="container mt-4">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <img src="./assets/logo.png" alt="" width="380" height="150" >
+           
+            </div>
         </div>
     </header>
-    <section>
-        <div>
-          
-            <input class="form-control"  type="text" placeholder="Recherche une recette ..." aria-label="readonly input example" >
-        </div>
-    </section>
 
+    <main class="main">
 
-  <section>
-     <!-- mini tags  -->
-     <section id="mini-tags" class="container my-4">
-    </section>
+        <!-- input main research -->
+        <section class="input-group container mt-4" id="main-research-input">
+            <input type="text" id="search" class="form-control p-2 rounded"
+                placeholder="Rechercher un ingrédient, mode de préparation ou une recette"
+                aria-label="Rechercher un ingrédient, mode de préparation ou une recette" autocomplete="off">
+        </section>
 
-    <!-- les tags  -->
-    <section class="container my-4 ">
+        <!-- mini tags  -->
+        <section id="mini-tags" class="container my-4">
+        </section>
 
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Ingredients</button>
-                <div id="myDropdown" class="dropdown-content">
-                  <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+        <!-- les tags  -->
+        <section class="container my-4 ">
+            <div class="search-buttons">
+
+                <!-- first tag ingredients  -->
+                <div class="search-wrapper-ingredients bg-primary">
+                    <div class="search-control-ingredients">
+                        <input type="text" name="ingredients" id="ingredients" class="hide"
+                            placeholder="Rechercher ingredients" autocomplete="off">
+                        <label for="ingredients">Ingredients</label>
+                    </div>
+                    <div class="close-dropdown-ingredients">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
                     <!-- list ingredients  -->
+                    <div class="search-list-block-ingredients hide">
+                        <ul class="search-list-ingredients">
 
-                    <ul class="search-list-ingredients">
-
-                    </ul>
-    
+                        </ul>
+                    </div>
                 </div>
-              </div>
 
+                <!-- second tag appareil  -->
+                <div class="search-wrapper-appliances bg-success">
+                    <div class="search-control-appliances">
+                        <input type="text" name="appliances" id="appliances" class="hide"
+                            placeholder="Rechercher appliances" autocomplete="off">
+                        <label for="appliances">Appareil</label>
+                    </div>
+                    <div class="close-dropdown-appliances">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <!-- list appliances  -->
+                    <div class="search-list-block-appliances hide">
+                        <ul class="search-list-appliances">
 
-              <div class="dropdown_app">
-                <button onclick="FunctionApp()" class="dropbtn">Apliance</button>
-                <div id="AppCards" class="dropdown-content-app">
-                  <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionApp()">
-                    <!-- list appliance  -->
-
-                    <ul class="search-list-appliance">
-
-                    </ul>
-    
+                        </ul>
+                    </div>
                 </div>
-              </div>
-
-
-              <div class="dropdown_app">
-                <button onclick="FunctionUst()" class="dropbtn">Ustensils</button>
-                <div id="ustCards" class="dropdown-content-app">
-                  <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionUst()">
-                    <!-- list ust  -->
-
-                    <ul class="search-list-ustensils">
-
-                    </ul>
-    
+                <!-- third tag ustensils  -->
+                <div class="search-wrapper-ustensils bg-danger">
+                    <div class="search-control-ustensils">
+                        <input type="text" name="ustensils" id="ustensils" class="hide"
+                            placeholder="Rechercher ustensils" autocomplete="off">
+                        <label for="ustensils">Ustensils</label>
+                    </div>
+                    <div class="close-dropdown-ustensils">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <!-- list ustensils  -->
+                    <div class="search-list-block-ustensils hide">
+                        <ul class="search-list-ustensils"></ul>
+                    </div>
                 </div>
-              </div>
-  </section>
+            </div>
+        </section>
 
-    <!-- cards grid-->
-    <section>
-      <div class="cards_grib">
-          
-      </div>
-    </section>
+        <!-- cards  -->
+        <div class="container">
+            <div class="row cards-recipes"></div>
+        </div>
+        <section class="message-no-recette container text-center hide">
+            <p>
+                Aucune recette ne correspond à vous critères de recherche. Vous pouvez chercher "tarte aux pommes",
+                "poisson", etc.
+            </p>
 
-</div>
+        </section>
+  </main>
 
-
-
-
-
-  <!--  TOOLS-->
-<script src="/js/tools/btn-search.js"></script>
-<script src="/js/tools/bar-search.js"></script>
-
-  <!-- FACTRORIES-->
-  <script src="/js/factories/listApp.js"></script>
-
+  
+    <!-- FACTRORIES-->
+  <script src="/js/factories/cardList.js"></script>
   <script src="/js/factories/listAll.js"></script>
 
 
-  <script src="/js/factories/cardList.js"></script>
-  <!-- PAGE-->
-  <script src="/js/page/index.js"></script>
-  <script src="/js/page/recettes.js"></script>
+  <script src="/js/factories/miniTagas.js"></script>
+
+ <!-- data recipes  -->
+ <script src="./data/recipes.js"></script>
+  
+   <!-- main app  -->
+  <script src="/js/index.js"></script>
+
+  <!--  TOOLS-->
+<script src="/js/tools/allArry.js"></script>
+<script src="/js/tools/btn-search.js"></script>
+<script src="/js/tools/bar-search.js"></script>
+
+
+
+
+
+
+
   <!-- API-->
 <script src="/js/api.js"></script>
 

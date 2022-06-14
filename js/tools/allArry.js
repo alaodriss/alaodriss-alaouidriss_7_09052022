@@ -12,3 +12,6 @@ let totalMiniTags = [];
 let researchToLowerCase;
 let mixAll;
 let valueLowCase;
+
+// console.log('toto')
+// console.log(resultsRecipes)

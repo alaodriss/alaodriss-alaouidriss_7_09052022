@@ -87,7 +87,7 @@ function createMiniTags() {
       );
     });
 
-    console.log(listItemUstensils)
+    // console.log(listItemUstensils)
   }
 }
 

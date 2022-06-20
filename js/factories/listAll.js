@@ -3,6 +3,7 @@ function listsDOM(item, element) {
   wrapper.classList.add(`search-item`);
   wrapper.classList.add(`search-item-${element}`);
   // wrapper.setAttribute("data-value", `${item.toLowerCase()}`);
+  
   wrapper.innerText = item.charAt(0).toUpperCase() + item.slice(1);
 
   return wrapper;

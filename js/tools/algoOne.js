@@ -7,6 +7,7 @@ function globalSearchInput(value) {
     //
     // filter inputs and minitags
     //
+    
     if (e.target.value.length > 2 && finalResultTotalMiniTags.length === 0) {
       results = recipes.filter((obj) => {
         return (

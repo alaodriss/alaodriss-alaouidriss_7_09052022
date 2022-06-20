@@ -1,3 +1,5 @@
+
+
 // get all elements to create tag lists ingredients/appliance/ustensils
 function getElementsInRecipes(recipes, elementToGet) {
   let list = [];
@@ -95,5 +97,11 @@ function createCardRecipes() {
     rowCardsRecipes.appendChild(recipeCardDOM);
   });
 }
+
+
+
+
+
+
 CreateListElements();
 createCardRecipes();
